@@ -318,7 +318,7 @@ namespace OVRFWQ
     class OVRFW::OvrGuiSys& ovrQPlayerAppl::GetGuiSys(){return *g_GuiSys;}
     class OVRFW::ovrLocale& ovrQPlayerAppl::GetLocale(){return *g_Locale;}
 //==================================================================================================
-
+    HandSampleConfigurationParameters g_SampleConfiguration;
 void ResetLaserPointer( ovrInputDeviceHandBase& trDevice );
 bool IsDeviceTypeEnabled( ovrInputDeviceBase& device);
 void EnumerateInputDevices( std::vector<ovrInputDeviceBase*> &devices, ovrQPlayerAppl& app);
@@ -659,7 +659,7 @@ void ovrQPlayerAppl::RenderRunningControl( const OVRFW::ovrApplFrameIn& in, OVRF
                     OVRFWQ::OnDeviceDisconnected(g_InputDevices, *theApp,  device->GetDeviceID());
                     continue;
                 }
-                trDevice.SetTracking(remoteTracking);
+               //trDevice.SetTracking(remoteTracking);
 
             }
         }
@@ -1594,7 +1594,7 @@ void ovrQPlayerAppl::AppRenderFrame( const OVRFW::ovrApplFrameIn& in, OVRFW::ovr
                 g_center_view_real = out.FrameMatrices.CenterView;
                 g_center_view = g_center_view_left * g_center_view_real ;
                 //==================================================================================
-               RenderRunningVideo(in, out);
+              RenderRunningVideo(in, out);
                 if ( g_show_menu ) {
                     RenderRunningMenu(in, out);
                     RenderRunningControl(in, out);
@@ -3089,15 +3089,15 @@ void ResetLaserPointer( ovrInputDeviceHandBase& trDevice )
         LaserPointerParticleHandle.Release();
     }
 }
-bool IsDeviceTypeEnabled( ovrInputDeviceBase& device)
-{
-    auto deviceType = device.GetType();
-    if (deviceType == ovrControllerType_StandardPointer) {
-        return 1;
-    } else {
-        return 0;
+    bool IsDeviceTypeEnabled( ovrInputDeviceBase& device)
+    {
+        auto deviceType = device.GetType();
+        if (deviceType == ovrControllerType_StandardPointer) {
+            return g_SampleConfiguration.EnableStandardDevices;
+        } else {
+            return !g_SampleConfiguration.EnableStandardDevices;
+        }
     }
-}
 void EnumerateInputDevices( std::vector<ovrInputDeviceBase*> &devices, ovrQPlayerAppl& app)
 {
     for (uint32_t deviceIndex = 0;; deviceIndex++) {
