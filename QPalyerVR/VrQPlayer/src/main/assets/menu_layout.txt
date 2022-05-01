@@ -1,0 +1,254 @@
+itemParms {
+	// root
+	VRMenuObjectParms {
+		Type = VRMENU_CONTAINER;
+		Flags = VRMENUOBJECT_RENDER_HIERARCHY_ORDER | VRMENUOBJECT_DONT_RENDER_TEXT;
+		Components {
+		}
+		Text = "";
+		LocalPose {
+			Position = ( 0.0f, 0.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		LocalScale = ( 1.0f, 1.0f, 1.0f );
+		TextLocalPose {
+			Position = ( 0.0f, 0.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		TextLocalScale = ( 1.0f, 1.0f, 1.0f );
+		ParentId = -1;
+		Id = 0;
+		Name = "root";		
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	// panel
+	VRMenuObjectParms {
+		Type = VRMENU_STATIC;
+		Flags = VRMENUOBJECT_RENDER_HIERARCHY_ORDER;
+		TexelCoords = true;
+		SurfaceParms {
+			VRMenuSurfaceParms {
+				SurfaceName = "panel";
+				ImageNames {
+					string[0] = "apk:///assets/panel.ktx";
+				}
+				TextureTypes {
+					eSurfaceTextureType[0] =  SURFACE_TEXTURE_DIFFUSE;
+				}
+				Color = ( 0.1294f, 0.13333f, 0.14117f, 0.5f );
+				Border = ( 16.0f, 16.0f, 16.0f, 16.0f );				
+				Dims = ( 550.0f, 422.0f );
+			}
+		}
+		Text = "VrInput";
+		LocalPose {
+			Position = ( 0.0f, 00.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		LocalScale = ( 552.0f, 442.0f, 1.0f );
+		TextLocalPose {
+			Position = ( 0.0f, 376.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		TextLocalScale = ( 1.0f, 1.0f, 1.0f );
+		FontParms {
+			AlignHoriz = HORIZONTAL_CENTER;
+			AlignVert = VERTICAL_BASELINE;
+			Scale = 0.75f;
+		}
+		ParentName = "root";
+		Id = 3;
+		Name = "panel";
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	// primare Input MENU
+	//=================================================
+
+	// primary_input_foreground
+	VRMenuObjectParms {
+		Type = VRMENU_CONTAINER;
+		Flags = VRMENUOBJECT_RENDER_HIERARCHY_ORDER | VRMENUOBJECT_DONT_RENDER_TEXT;
+		TexelCoords = true;
+		Components {
+		}
+		Text = "";
+		LocalPose {
+			Position = ( 0.0f, 104.0f, 0.05f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		LocalScale = ( 1.0f, 1.0f, 1.0f );
+		TextLocalPose {
+			Position = ( 0.0f, 0.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		TextLocalScale = ( 1.0f, 1.0f, 1.0f );
+		ParentName = "panel";
+		Id = 1;
+		Name = "primary_input_foreground";		
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+	// primare Input trigger
+	VRMenuObjectParms {
+		Type = VRMENU_STATIC;
+		Flags = VRMENUOBJECT_RENDER_HIERARCHY_ORDER;
+		TexelCoords = true;
+		SurfaceParms {
+			VRMenuSurfaceParms {
+				SurfaceName = "trigger_panel";
+				ImageNames {
+					string[0] = "apk:///assets/panel.ktx";
+				}
+				TextureTypes {
+					eSurfaceTextureType[0] =  SURFACE_TEXTURE_DIFFUSE;
+				}
+				Color = ( 0.25f, 0.25f, 0.25f, 1.0f );
+				Border = ( 16.0f, 16.0f, 16.0f, 16.0f );				
+				Dims = ( 128.0f, 64.0f );
+			}
+		}
+		Text = "Trigger";
+		LocalPose {
+			Position = ( -217.0f, -10.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		LocalScale = ( 102.0f, 32.0f, 1.0f );
+		TextLocalPose {
+			Position = ( 0.0f, 0.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		TextLocalScale = ( 1.0f, 1.0f, 1.0f );
+		FontParms {
+			AlignHoriz = HORIZONTAL_CENTER;
+			AlignVert = VERTICAL_CENTER;
+			Scale = 0.5f;
+			WrapWidth = 120.0f;
+			MultiLine = true;
+		}
+		ParentName = "primary_input_foreground";
+		Id = 4;
+		Name = "image_gain";
+	}
+        ///////////////////////////////////////////////////
+	// primare Input triggersana
+	VRMenuObjectParms {
+		Type = VRMENU_STATIC;
+		Flags = VRMENUOBJECT_RENDER_HIERARCHY_ORDER;
+		TexelCoords = true;
+		SurfaceParms {
+			VRMenuSurfaceParms {
+				SurfaceName = "trigger_panelana";
+				ImageNames {
+					string[0] = "apk:///assets/panel.ktx";
+				}
+				TextureTypes {
+					eSurfaceTextureType[0] =  SURFACE_TEXTURE_DIFFUSE;
+				}
+				Color = ( 0.25f, 0.25f, 0.25f, 1.0f );
+				Border = ( 16.0f, 16.0f, 16.0f, 16.0f );				
+				Dims = ( 128.0f, 64.0f );
+			}
+		}
+		Text = "";
+		LocalPose {
+			Position = ( -217.0f, -42.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		LocalScale = ( 102.0f, 32.0f, 1.0f );
+		TextLocalPose {
+			Position = ( 0.0f, 0.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		TextLocalScale = ( 1.0f, 1.0f, 1.0f );
+		FontParms {
+			AlignHoriz = HORIZONTAL_CENTER;
+			AlignVert = VERTICAL_CENTER;
+			Scale = 0.5f;
+		}
+		ParentName = "primary_input_foreground";
+		Id = 5;
+		Name = "image_gamma";
+	}
+        ///////////////////////////////////////////////////
+	// primare Input trigger
+	VRMenuObjectParms {
+		Type = VRMENU_STATIC;
+		Flags = VRMENUOBJECT_RENDER_HIERARCHY_ORDER;
+		TexelCoords = true;
+		SurfaceParms {
+			VRMenuSurfaceParms {
+				SurfaceName = "trigger_panel";
+				ImageNames {
+					string[0] = "apk:///assets/panel.ktx";
+				}
+				TextureTypes {
+					eSurfaceTextureType[0] =  SURFACE_TEXTURE_DIFFUSE;
+				}
+				Color = ( 0.25f, 0.25f, 0.25f, 1.0f );
+				Border = ( 16.0f, 16.0f, 16.0f, 16.0f );				
+				Dims = ( 128.0f, 64.0f );
+			}
+		}
+		Text = "Trigger";
+		LocalPose {
+			Position = ( -15.0f, -10.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		LocalScale = ( 102.0f, 32.0f, 1.0f );
+		TextLocalPose {
+			Position = ( 0.0f, 0.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		TextLocalScale = ( 1.0f, 1.0f, 1.0f );
+		FontParms {
+			AlignHoriz = HORIZONTAL_CENTER;
+			AlignVert = VERTICAL_CENTER;
+			Scale = 0.5f;
+			WrapWidth = 120.0f;
+			MultiLine = true;
+		}
+		ParentName = "primary_input_foreground";
+		Id = 4;
+		Name = "video_seek";
+	}
+        ///////////////////////////////////////////////////
+	// primare Input triggersana
+	VRMenuObjectParms {
+		Type = VRMENU_STATIC;
+		Flags = VRMENUOBJECT_RENDER_HIERARCHY_ORDER;
+		TexelCoords = true;
+		SurfaceParms {
+			VRMenuSurfaceParms {
+				SurfaceName = "trigger_panelana";
+				ImageNames {
+					string[0] = "apk:///assets/panel.ktx";
+				}
+				TextureTypes {
+					eSurfaceTextureType[0] =  SURFACE_TEXTURE_DIFFUSE;
+				}
+				Color = ( 0.25f, 0.25f, 0.25f, 1.0f );
+				Border = ( 16.0f, 16.0f, 16.0f, 16.0f );				
+				Dims = ( 128.0f, 64.0f );
+			}
+		}
+		Text = "";
+		LocalPose {
+			Position = ( -15.0f, -42.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		LocalScale = ( 102.0f, 32.0f, 1.0f );
+		TextLocalPose {
+			Position = ( 0.0f, 0.0f, 0.0f );
+			Orientation = ( 0.0f, 0.0f, 0.0f, 1.0f );
+		}
+		TextLocalScale = ( 1.0f, 1.0f, 1.0f );
+		FontParms {
+			AlignHoriz = HORIZONTAL_CENTER;
+			AlignVert = VERTICAL_CENTER;
+			Scale = 0.5f;
+		}
+		ParentName = "primary_input_foreground";
+		Id = 5;
+		Name = "video_position";
+	}
+}
