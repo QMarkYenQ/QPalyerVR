@@ -1,6 +1,6 @@
 # QPalyerVR
 
-The Oculus APP Play VR180 from DLNA. It is developed based on the following modules.
+This is an Oculus APP. It play the VR180 video on DLNA. It is developed based on the following modules.
 
 # Android ( JAVA )
 
