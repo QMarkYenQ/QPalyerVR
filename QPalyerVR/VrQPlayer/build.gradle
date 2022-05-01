@@ -1,0 +1,107 @@
+plugins {
+  id 'com.android.application'
+}
+
+
+
+android {
+  compileSdkVersion 30
+  buildToolsVersion '30.0.2'
+
+  defaultConfig {
+
+    minSdkVersion 29
+    targetSdkVersion 30
+
+    externalNativeBuild {
+      ndk {
+        abiFilters 'arm64-v8a'
+      }
+      ndkBuild {
+        targets "vrqplayer"
+
+        def numProcs = Runtime.runtime.availableProcessors()
+        arguments "V=0", "-j$numProcs", "-C$project.buildDir.parent"
+        abiFilters 'arm64-v8a'
+      }
+    }
+  }
+  packagingOptions {
+    exclude 'META-INF/beans.xml'
+  }
+  externalNativeBuild {
+    ndkBuild {
+      path 'src/main/jni/Android.mk'
+    }
+  }
+
+  buildTypes {
+    debug {
+      debuggable true
+      jniDebuggable true
+
+      externalNativeBuild {
+        ndkBuild {
+          arguments "NDK_DEBUG=1","OVR_DEBUG=1","USE_ASAN=1"
+        }
+      }
+    }
+
+    release {
+      debuggable false
+      jniDebuggable false
+
+      externalNativeBuild {
+        ndkBuild {
+          arguments "NDK_DEBUG=0","OVR_DEBUG=0","USE_ASAN=0"
+        }
+      }
+    }
+  }
+
+  sourceSets {
+    main {
+      jni.srcDirs = ["src/main/jni/" ]
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  ndkVersion '22.1.7171670'
+
+
+}
+
+dependencies {
+
+  implementation 'androidx.core:core:1.6.0'
+  implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
+  implementation 'androidx.media2:media2-exoplayer:1.1.0'
+
+  // Cling library
+  api "org.fourthline.cling:cling-core:$rootProject.ext.clingVersion"
+  api "org.fourthline.cling:cling-support:$rootProject.ext.clingVersion"
+  // Jetty library
+  api "org.eclipse.jetty:jetty-server:$rootProject.ext.jettyVersion"
+  api "org.eclipse.jetty:jetty-servlet:$rootProject.ext.jettyVersion"
+  api "org.eclipse.jetty:jetty-client:$rootProject.ext.jettyVersion"
+  api "org.slf4j:slf4j-simple:$rootProject.ext.slf4jVersion"
+  implementation 'org.jetbrains:annotations:15.0'
+
+
+}
+
+
+task( "cleanWorkAround" ) {
+    description "Workaround for .externalNativeBuild not being deleted on clean"
+}.doLast {
+    project.delete project.file( ".externalNativeBuild" )
+}
+
+// WORKAROUND: On Mac OS X, running ndk-build clean with a high num of parallel executions
+// set may result in the following build error:  rm: fts_read: No such file or directory.
+// Currently, there isn't a good way to specify numProcs=1 only on clean. So, in order
+// to work around the issue, delete the auto-generated .externalNativeBuild artifacts
+// (where $numProcs specified) before executing the clean task.
+clean.dependsOn cleanWorkAround

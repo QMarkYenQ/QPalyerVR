@@ -1,0 +1,6 @@
+rootProject.name = "QPalyerVR"
+include ':VrApi'
+include ':SampleCommon'
+include ':SampleFramework'
+include ':VrQPlayer'
+
